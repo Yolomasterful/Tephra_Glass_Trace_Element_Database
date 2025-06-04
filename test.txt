@@ -1,0 +1,5 @@
+Each employee has at most one department
+Each employee, if it has a department, has only one
+Each employee that is related to an department, is related to only one
+For eac employee, if it does participate in the isManagedBy
+Each department is either not the first element of any pair in the is employee by relation
