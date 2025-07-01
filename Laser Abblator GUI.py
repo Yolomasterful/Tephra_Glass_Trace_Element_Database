@@ -36,17 +36,13 @@ grey = {
     }
 }
 
-# Create and register the theme
-style = Style()
-
-
-root = ttk.Window(themename="purple_cream")
+root = ttk.Window()
 root.title("Laser Abblation GUI")
 root.resizable(True, True)
 root.minsize(16*50, 9*50)
 #root.geometry(f"{16*30}x{9*30}")
 
-root.configure(bg="#352F44")
+#root.configure(bg="#352F44")
 
 
 title = ttk.Label(root, text="Laser Abblation Database GUI", font=("Arial", 25))
