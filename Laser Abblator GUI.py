@@ -1,3 +1,5 @@
+import os
+from tkinter import filedialog
 import ttkbootstrap as ttk
 from ttkbootstrap.style import Style
 from ttkbootstrap.constants import *
@@ -36,19 +38,34 @@ grey = {
     }
 }
 
+class App:
+  def __init__(self, root):
+
+    self._root = root
+    
+    self._root.configure(bg="#352F44")
+
+    title = ttk.Label(root, text="Laser Abblation Database GUI", font=("Arial", 25), foreground='#ffffff', background='')
+    title.grid(column=0, columnspan=2, row=0)
+
+    button = ttk.Button(root, text="Import Unorganized Data", command=lambda: self._import_file((("Excel Spreadsheet", "*.xlsx"),)))
+    button.grid(column=0, row=1)
+
+    button = ttk.Button(root, text="Import Database", command=lambda: self._import_file((("Database", "*.db"),)))
+    button.grid(column=1, row=1)
+  
+  def _import_file(self, extensions:tuple):
+    
+    filedialog.askopenfile(initialdir=os.getcwd(), filetypes=extensions)
+
+
+
 root = ttk.Window()
+app = App(root)
 root.title("Laser Abblation GUI")
 root.resizable(True, True)
 root.minsize(16*50, 9*50)
-#root.geometry(f"{16*30}x{9*30}")
-
-#root.configure(bg="#352F44")
-
-
-title = ttk.Label(root, text="Laser Abblation Database GUI", font=("Arial", 25))
-title.grid()
-
-
+root.geometry(f"{16*30}x{9*30}")
 
 root.mainloop()
 
