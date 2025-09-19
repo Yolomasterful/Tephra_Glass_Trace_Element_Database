@@ -1,5 +1,6 @@
 import os, matplotlib, sqlite3
 from tkinter import filedialog
+from tkinter import messagebox
 import ttkbootstrap as ttk
 from ttkbootstrap.style import Style
 from ttkbootstrap.dialogs import Querybox
@@ -50,6 +51,8 @@ class App:
     self._database_filename = ttk.StringVar(value="None")
     self._data_filename = ttk.StringVar(value="None")
 
+    self._cur = None
+
   def _layout(self):
     
     file_mgr_frame = ttk.Frame(self._root, relief='solid')
@@ -70,11 +73,28 @@ class App:
     ToolTip(crt_db, self._database_filename)
     ToolTip(imp_df, self._data_filename)
 
-    file_mgr_frame.grid()
+    file_mgr_frame.grid(pady=(0,2), column=0, row=0, columnspan=4, sticky='W')
+
+    query_frame = ttk.Frame(self._root, relief='solid')
+    
+    query_label = ttk.Label(query_frame, text="SQL Query:")
+    query_label.grid(padx=(10,5), pady=10, column=0, row=0)
+
+    query_entrybox = ttk.Entry(query_frame)
+    query_entrybox.grid(padx=(5,5), pady=10, column=1, columnspan=2, row=0)
+
+    query_submit = ttk.Button(query_frame, text="Submit", style='TButtonSuccess', command=lambda: self._custom_query())
+    query_submit.grid(padx=(5,10), pady=10, column=3, row=0)
+
+    query_frame.grid(pady=(2,0), column=0, row=1, sticky='W')
+
+  def _global_refresh(self):
+    self._update_vars()
+    self._load_database()
 
   def _set_file(self, key, value):
     self._files.update({key:value})
-    self._update_vars()
+    self._global_refresh()
 
   def _import_file(self, extensions:tuple):
     return filedialog.askopenfile(title="Choose File...", initialdir=os.getcwd(), filetypes=extensions)
@@ -92,15 +112,28 @@ class App:
     else: self._data_filename.set("None")
 
   def _reset_files(self):
+    for key in self._files:
+      try: self._files[key].close()
+      except: pass
     self._files = {'Database':None, 'DataFile':None}
-    self._update_vars()
+    self._cur = None
+    self._global_refresh()
+
+  def _load_database(self):
+    if self._files['Database'] != None:
+      self._files['Database'] = sqlite3.connect(self._files['Database'].name)
+      self._cur = self._files['Database'].cursor()
+  
+  def _custom_query(self):
+    if self._files['Database'] != None:
+      messagebox.askyesno(title="Confirmation", message="Are you sure you want to use a SQL Query?\n(Can be Dangerous for Database)", icon='warning')
 
 
 root = ttk.Window()
 app = App(root)
 root.title("Tephra Glass Trace Database GUI")
 root.resizable(True, True)
-root.minsize(16*50, 9*50)
+root.minsize(16*40, 9*40)
 root.geometry(f"{16*30}x{9*30}")
 
 root.mainloop()
