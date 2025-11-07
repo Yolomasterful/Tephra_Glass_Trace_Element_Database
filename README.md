@@ -3,3 +3,7 @@
 <p>1. More Organized</p>
 <p>2. Easily Accessible</p>
 <p>3. Faster Searching and Loading of larger databases</p>
+<p>4. Shift away from outdated and slow method of storing large datasets. (Excel Spreadsheets)</p>
+<h1>Languages Used</h1>
+<h2>Python & SQL</h2>
+<p>I decided to go with using Python as a frontend and SQL for the backend.</p>
