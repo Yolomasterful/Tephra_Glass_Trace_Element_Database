@@ -20,3 +20,17 @@
 <p>33.7,NIST612 - 1, ...</p>
 <p>33.7,NIST612 - 2, ...</p>
 <p>32.6,NIST610 - 1, ...</p>
+<h1>Installation</h1>
+<h2>Self Building</h2>
+<p>I have added an rudimentary makefile that automatically installs the required libraries for the project and then converts the python code into an executable.</p>
+<h2>Prerequisutes</h2>
+<p>Python 3.12 (as this is what I build the app on)</p>
+<p>Make 4.3 (optional)</p>
+<h2>Make Route Steps</h2>
+<p>1. make install</p>
+<p>2. make build</p>
+<h3>OR</h3>
+<p>1. make</p>
+<h2>Manual Steps</h2>
+<p>1. pip install requirements.txt</p>
+<p>2. pyinstaller --onefile "Tephra Glass Trace Database GUI.pyw"</p>
