@@ -35,6 +35,6 @@
 <h3>OR</h3>
 <p>1. make</p>
 <h2>Manual Steps</h2>
-<p>1. pip install requirements.txt</p>
+<p>1. pip install -r requirements.txt</p>
 <p>2. pyinstaller --add-data "info_icon.png:." --onefile --hidden-import "PIL._tkinter_finder" "Tephra Glass Trace Database GUI.pyw" --clean</p>
 <p>The created file will be within the newly made dist folder.</p>
