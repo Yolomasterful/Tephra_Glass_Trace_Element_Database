@@ -28,8 +28,7 @@
 <h2>Self Building</h2>
 <p>I have added an rudimentary makefile that automatically installs the required libraries for the project and then converts the python code into an executable.</p>
 <h2>Prerequisutes</h2>
-<p>Python 3.12 >= (as this is what I build the app on)</p>
-<a href="https://www.python.org/downloads/">download page</a>
+<p>Python 3.12 >= (as this is what I build the app on)</p> <a href="https://www.python.org/downloads/">download page</a>
 <p>Make 4.3 (optional)</p>
 <h2>Make Route Steps</h2>
 <p>1. make install</p>
