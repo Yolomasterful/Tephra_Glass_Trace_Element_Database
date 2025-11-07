@@ -22,7 +22,7 @@
 <p>32.6,NIST610 - 1, ...</p>
 <h1>Installation</h1>
 <h2>Releases</h2>
-<a href="">here</a>
+<a href="https://github.com/Yolomasterful/Tephra_Glass_Trace_Element_Database/releases">here</a>
 <h2>Self Building</h2>
 <p>I have added an rudimentary makefile that automatically installs the required libraries for the project and then converts the python code into an executable.</p>
 <h2>Prerequisutes</h2>
