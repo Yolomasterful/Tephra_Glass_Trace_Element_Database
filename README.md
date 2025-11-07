@@ -21,6 +21,7 @@
 <p>33.7,NIST612 - 1, ...</p>
 <p>33.7,NIST612 - 2, ...</p>
 <p>32.6,NIST610 - 1, ...</p>
+<a href="https://github.com/Yolomasterful/Tephra_Glass_Trace_Element_Database/blob/main/RawData/grubstake_data.csv">Demo File</a>
 <h1>Installation</h1>
 <h2>Releases</h2>
 <a href="https://github.com/Yolomasterful/Tephra_Glass_Trace_Element_Database/releases">here</a>
