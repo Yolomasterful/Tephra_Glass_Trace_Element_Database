@@ -1,4 +1,4 @@
-import os, csv, time, matplotlib, sqlite3
+import os, sys, csv, time, matplotlib, sqlite3
 
 from PIL import Image, ImageTk
 
@@ -176,12 +176,17 @@ class App:
 
     self._layout()
   
+  def _resource_path(self, rel_path):
+    base = getattr(sys, "_MEIPASS", os.path.dirname(__file__))
+    return os.path.join(base, rel_path)
+
+
   def _variables(self):
     self._root = None
 
     #Style(theme='darkly')
 
-    self._info_icon = ImageTk.PhotoImage(Image.open("info_icon.png").resize((24,24), Image.LANCZOS))
+    self._info_icon = ImageTk.PhotoImage(Image.open(self._resource_path("info_icon.png")).resize((24,24), Image.LANCZOS))
 
     self._files = {'Database':ttk.StringVar(value="None"), 'DataFile':ttk.StringVar(value="None")}
 
