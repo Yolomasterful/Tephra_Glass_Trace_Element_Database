@@ -1,4 +1,4 @@
-import os, sys, csv, time, matplotlib, sqlite3
+import os, re, sys, csv, time, matplotlib, sqlite3
 
 from PIL import Image, ImageTk
 
@@ -86,9 +86,21 @@ class Database:
         for row in rows:
           w.writerow([self._cur.fetchone()[0]]+list(row[2:]))
 
+  def isfloat(self, string:str):
+    regex = re.compile(r'^[+-]?('
+    r'(?:\d+\.\d*|\.\d+)'
+    r'|(?:\d+(?:[eE][+-]?\d+))'
+    r'|(?:\d+\.\d*(?:[eE][+-]?\d+)?)'
+    r')$')
+    if not isinstance(string, str) or not string:
+      return False
+    return bool(regex.match(string))
+
   def _auto_parse(self, datafile:str):
     with open(datafile, 'r') as file:
-      headers = ["iID", "sID", "sIteration"] + file.readline().strip().strip(",").split(",")[2:]
+      intstd = int(self.isfloat(line[0]))
+
+      headers = ["iID", "sID", "sIteration"] + file.readline().strip().strip(",").split(",")[intstd+1:]
 
       iID = None
       sID = None
@@ -101,14 +113,17 @@ class Database:
           if not line[0].split(".")[0].isdigit(): continue
         except: continue
         
-        #print(line[:5], line[-5:])
+        
 
-        sample_intstdwv = line[0]
-        sample = line[1]
-        line[1] = line[1].split(" - ")
-        sample_name = line[1][0]
-        sample_iteration = line[1][-1]
-        data = line[2:]
+        if intstd:
+          sample_intstdwv = line[0]
+        else: sample_intstdwv = "null"
+        
+        sample = line[intstd]
+        line[intstd] = line[intstd].split(" - ")
+        sample_name = line[intstd][0]
+        sample_iteration = line[intstd][-1]
+        data = line[intstd+1:]
 
         self._cur.execute(f"""SELECT MAX("sID") FROM "Samples" WHERE "sName" = ?""", (sample_name,))
 
