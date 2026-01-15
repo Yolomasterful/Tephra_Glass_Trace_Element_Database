@@ -6,7 +6,7 @@
 <p>4. Shift away from outdated and slow method of storing large datasets. (Excel Spreadsheets)</p>
 <p>5. Reliable Interface to manipulate and convert old forms of data</p>
 <h1>Languages Used: Python & SQL</h1>
-<p>I decided to go with Python as a frontend and SQL for the backend. Python allowed me to easily create a gui using tkinterbootstrap, that still looks presentable to a degree compared to competiting programs. As well as aiding with my prior knowledge of using tkinter for other projects, which made it easier to get this project into an Alpha phase. SQL allowed me to store data efficiently and which can load quickly or be parsed into segments for large scale storage. I tested the validity of using SQL with large datasets and it managed to work well in an unoptimized state with up to 1.6 million entries each containing around 30 columns of data. With SQL being </p>
+<p>I decided to go with Python as a frontend and SQL for the backend. Python allowed me to easily create a gui using tkinterbootstrap, that still looks presentable to a degree compared to competiting programs. As well as aiding with my prior knowledge of using tkinter for other projects, which made it easier to get this project into an Alpha phase. SQL allowed me to store data efficiently and which can load quickly or be parsed into segments for large scale storage. I tested the validity of using SQL with large datasets and it managed to work well in an unoptimized state with up to 1.6 million entries each containing around 30 columns of data.</p>
 <h1>Standard Template</h1>
 <p>The Template consists of 4 main points,</p>
 <p>1. IntStdWv has to be in the first column of any sample name if present. E.X. 33.2 (float) or 33 (int)</p>
